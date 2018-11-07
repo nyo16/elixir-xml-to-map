@@ -1,10 +1,10 @@
 defmodule XmlToMap do
-
   @moduledoc """
   Simple convenience module for getting a map out of an XML string.
   """
 
   alias XmlToMap.NaiveMap
+  alias XmlToMap.NaiveMapiwthAttributes
 
   @doc """
   naive_map(xml) utility is inspired by Rails Hash.from_xml()
@@ -19,10 +19,16 @@ defmodule XmlToMap do
   """
 
   def naive_map(xml) do
-    #can't handle xmlns
+    # can't handle xmlns
     xml = String.replace(xml, ~r/(\sxmlns="\S+")|(xmlns:ns2="\S+")/, "")
     {:ok, tuples, _} = :erlsom.simple_form(xml)
     NaiveMap.parse(tuples)
   end
 
+  def naive_map_with_attributes(xml) do
+    # can't handle xmlns
+    xml = String.replace(xml, ~r/(\sxmlns="\S+")|(xmlns:ns2="\S+")/, "")
+    {:ok, tuples, _} = :erlsom.simple_form(xml)
+    NaiveMapiwthAttributes.parse(tuples)
+  end
 end
