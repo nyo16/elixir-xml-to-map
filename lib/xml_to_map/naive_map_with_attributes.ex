@@ -1,4 +1,4 @@
-defmodule XmlToMap.NaiveMapwithAttributes do
+defmodule XmlToMap.NaiveMapWithAttributes do
   @moduledoc """
   Module to recursively traverse the output of erlsom.simple_form
   and produce a map.
